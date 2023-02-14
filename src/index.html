@@ -1,26 +1,57 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <!--<link rel="icon" href="img/smeshariki.png" type="image/png">-->
     <title>testVerstka4</title>
-</head>
-<body>
-<div class="mainContainer">
-    <div class="headerText">
+    <script type="module" defer src="index.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="headerText">
         Рассчитайте стоимость
-        <p>
-            автомобиля в лизинг
-        </p>
+        <p>автомобиля в лизинг</p>
+      </div>
+      <div class="valuesContainer">
+        <div class="cards">
+          <p>Стоимость автомобиля</p>
+          <label>
+            <input value="" type="text" class="item" />
+            <input type="range" min="1" max="100" value="50" class="slider" />
+            <span>₽</span>
+          </label>
+        </div>
+        <div class="cards">
+          <p>Первоначальный взнос</p>
+          <label>
+            <input type="text" class="item" />
+            <input type="range" min="1" max="100" value="50" class="slider" />
+            <span class="percents">13%</span>
+          </label>
+        </div>
+        <div class="cards">
+          <p>Срок лизинга</p>
+          <label>
+            <input type="text" class="item" />
+            <input type="range" min="1" max="100" value="50" class="slider" />
+            <span>мес.</span>
+          </label>
+        </div>
+        <div class="bottomText gridCol">
+          Сумма договора лизинга
+          <p>4 467 313 ₽</p>
+        </div>
+        <div class="bottomText gridCol">
+          Ежемесячный платеж от
+          <p>114 455 ₽</p>
+        </div>
+        <button class="btn">Оставить заявку</button>
+      </div>
     </div>
-    <div class="valuesContainer">
-        <p>Стоимость автомобиля</p>
-        <p>Первоначальный взнос</p>
-        <p>Срок лизинга</p>
-    </div>
-</div>
-</body>
+  </body>
 </html>
