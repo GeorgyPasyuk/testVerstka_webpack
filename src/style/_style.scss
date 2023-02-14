@@ -11,8 +11,8 @@
 }
 
 input {
-  outline: 0;
   border: 0;
+  outline: none;
   text-indent: 20px;
 }
 
@@ -26,7 +26,7 @@ input {
   line-height: 90%;
 }
 
-.valuesContainer {
+.cardContainer {
   width: 100%;
   margin-top: 32px;
   position: relative;
@@ -82,6 +82,7 @@ input {
         transition: 0.3s;
       }
       .item:focus {
+        border: 2px solid #f3f3f4 !important;
         background: transparent;
       }
       span {
@@ -144,6 +145,19 @@ input {
   }
 }
 
+.animation {
+  animation: roll 20s;
+}
+
+@keyframes roll {
+  0% {
+    rotate: 0;
+  }
+  100% {
+    rotate: 360deg;
+  }
+}
+
 /*
 media
 */
@@ -155,16 +169,26 @@ media
 }
 
 @media screen and (min-width: 768px) and (max-width: 1119px) {
-  .valuesContainer {
-    grid-template-columns: auto;
+  .cardContainer {
+    grid-template-rows: repeat(6, auto);
+    grid-template-columns: 1fr;
   }
   .cards {
     min-width: 696px !important;
   }
+  .textBox {
+    grid-row: 4;
+    grid-column: 1;
+  }
+  .textBox2 {
+    grid-row: 4;
+    grid-column: 1/2;
+    left: 50%;
+  }
 }
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
-  .valuesContainer {
+  .cardContainer {
     grid-template-columns: auto;
   }
   .cards {
