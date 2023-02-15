@@ -41,7 +41,6 @@ input {
   .cards {
     position: relative;
     width: 100%;
-    width: 427px;
     height: 119px;
     p {
       font-family: Gilroy, sans-serif;
@@ -194,9 +193,15 @@ media
   .cardContainer {
     grid-template-columns: auto;
   }
+  .headerText{
+    font-size: 34px!important;
+    br {
+      display: inline!important;
+    }
+  }
   .cards {
-    min-width: 280px !important;
-    min-height: 60px !important;
+    max-width: 280px !important;
+    height: 60px !important;
   }
 }
 
