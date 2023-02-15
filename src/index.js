@@ -8,16 +8,20 @@ const percent = document.querySelector(".percents");
 const item = document.querySelector("#vznos");
 const stoimost = document.querySelector("#stoimost");
 
+
 function formatInputs() {
-  items.forEach((item) => {
-    item.addEventListener("input", () => {
-      if (item.value.length > 19) {
-        item.value = item.value.slice(0, 19);
-      }
-      const inputValue = item.value.replace(/[^\d]/g, "");
-      item.value = inputValue.replace(/(\d{3})(?=\d)/g, "$1 ");
-    });
+  const stoimost = document.getElementById("stoimost");
+  stoimost.addEventListener("input", () => {
+    if (stoimost.value <= 1500000) {
+      stoimost.value = 1500000;
+    }
+    if (stoimost.value >= 10000000) {
+      stoimost.value = 10000000;
+    }
   });
+
+  /*const inputValue = item.value.replace(/[^\d]/g, "");
+      item.value = inputValue.replace(/(\d{3})(?=\d)/g, "$1 ");*/
 }
 formatInputs();
 

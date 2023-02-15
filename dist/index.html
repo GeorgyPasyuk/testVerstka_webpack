@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>testVerstka4</title>
     <script defer src="assets/index.js"></script>
-  <script defer src="main.c0e5f44a615a900d5cad.js"></script></head>
+  <script defer src="main.6a2a09a2c3e19d18e981.js"></script></head>
   <body>
     <div class="container">
       <div class="headerText">
@@ -20,24 +20,24 @@
         <div class="cards">
           <p>Стоимость автомобиля</p>
           <label>
-            <input value="" type="text" class="item" />
-            <input type="range" min="1" max="100" value="50" class="slider" />
+            <input value="3300000" id="stoimost" type="text" class="item" />
+            <input type="range" id="stoimostSlider" min="1500000" max="10000000" value="3300000" class="slider" />
             <span>₽</span>
           </label>
         </div>
         <div class="cards">
           <p>Первоначальный взнос</p>
           <label>
-            <input type="text" class="item" />
-            <input type="range" min="1" max="100" value="50" class="slider" />
+            <input type="text" id="vznos" readonly class="item"/>
+            <input type="range" id="vznosSlider" min="10" max="60" value="60" class="slider" />
             <span class="percents">13%</span>
           </label>
         </div>
         <div class="cards">
           <p>Срок лизинга</p>
           <label>
-            <input type="text" class="item" />
-            <input type="range" min="1" max="100" value="50" class="slider" />
+            <input type="text" id="srok" class="item" value="60"/>
+            <input type="range" id="srokSlider" min="6" max="120" value="50" class="slider" />
             <span>мес.</span>
           </label>
         </div>
@@ -49,7 +49,7 @@
           Ежемесячный платеж от
           <p>114 455 ₽</p>
         </div>
-        <button class="btn">Оставить заявку</button>
+        <button id="btn" class="btn">Оставить заявку</button>
       </div>
     </div>
   </body>

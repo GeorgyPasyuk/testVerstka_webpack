@@ -9333,7 +9333,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___HTML_LOADER_IMPORT_0___ = new URL(/* asset import */ __webpack_require__(/*! ./index.js */ "./src/index.js?06b5"), __webpack_require__.b);
 // Module
 var ___HTML_LOADER_REPLACEMENT_0___ = _node_modules_html_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_0___default()(___HTML_LOADER_IMPORT_0___);
-var code = "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta\n      name=\"viewport\"\n      content=\"width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0\"\n    />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\" />\n    <title>testVerstka4</title>\n    <" + "script defer src=\"" + ___HTML_LOADER_REPLACEMENT_0___ + "\"><" + "/script>\n  </head>\n  <body>\n    <div class=\"container\">\n      <div class=\"headerText\">\n        Рассчитайте стоимость\n        <p>автомобиля в лизинг</p>\n      </div>\n      <div class=\"cardContainer\">\n        <div class=\"cards\">\n          <p>Стоимость автомобиля</p>\n          <label>\n            <input value=\"\" type=\"text\" class=\"item\" />\n            <input type=\"range\" min=\"1\" max=\"100\" value=\"50\" class=\"slider\" />\n            <span>₽</span>\n          </label>\n        </div>\n        <div class=\"cards\">\n          <p>Первоначальный взнос</p>\n          <label>\n            <input type=\"text\" class=\"item\" />\n            <input type=\"range\" min=\"1\" max=\"100\" value=\"50\" class=\"slider\" />\n            <span class=\"percents\">13%</span>\n          </label>\n        </div>\n        <div class=\"cards\">\n          <p>Срок лизинга</p>\n          <label>\n            <input type=\"text\" class=\"item\" />\n            <input type=\"range\" min=\"1\" max=\"100\" value=\"50\" class=\"slider\" />\n            <span>мес.</span>\n          </label>\n        </div>\n        <div class=\"bottomText textBox\">\n          Сумма договора лизинга\n          <p>4 467 313 ₽</p>\n        </div>\n        <div class=\"bottomText textBox2\">\n          Ежемесячный платеж от\n          <p>114 455 ₽</p>\n        </div>\n        <button class=\"btn\">Оставить заявку</button>\n      </div>\n    </div>\n  </body>\n</html>\n";
+var code = "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta\n      name=\"viewport\"\n      content=\"width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0\"\n    />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\" />\n    <title>testVerstka4</title>\n    <" + "script defer src=\"" + ___HTML_LOADER_REPLACEMENT_0___ + "\"><" + "/script>\n  </head>\n  <body>\n    <div class=\"container\">\n      <div class=\"headerText\">\n        Рассчитайте стоимость\n        <p>автомобиля в лизинг</p>\n      </div>\n      <div class=\"cardContainer\">\n        <div class=\"cards\">\n          <p>Стоимость автомобиля</p>\n          <label>\n            <input value=\"3300000\" id=\"stoimost\" type=\"text\" class=\"item\" />\n            <input type=\"range\" id=\"stoimostSlider\" min=\"1500000\" max=\"10000000\" value=\"3300000\" class=\"slider\" />\n            <span>₽</span>\n          </label>\n        </div>\n        <div class=\"cards\">\n          <p>Первоначальный взнос</p>\n          <label>\n            <input type=\"text\" id=\"vznos\" readonly class=\"item\"/>\n            <input type=\"range\" id=\"vznosSlider\" min=\"10\" max=\"60\" value=\"60\" class=\"slider\" />\n            <span class=\"percents\">13%</span>\n          </label>\n        </div>\n        <div class=\"cards\">\n          <p>Срок лизинга</p>\n          <label>\n            <input type=\"text\" id=\"srok\" class=\"item\" value=\"60\"/>\n            <input type=\"range\" id=\"srokSlider\" min=\"6\" max=\"120\" value=\"50\" class=\"slider\" />\n            <span>мес.</span>\n          </label>\n        </div>\n        <div class=\"bottomText textBox\">\n          Сумма договора лизинга\n          <p>4 467 313 ₽</p>\n        </div>\n        <div class=\"bottomText textBox2\">\n          Ежемесячный платеж от\n          <p>114 455 ₽</p>\n        </div>\n        <button id=\"btn\" class=\"btn\">Оставить заявку</button>\n      </div>\n    </div>\n  </body>\n</html>\n";
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (code);
 
@@ -10723,21 +10723,62 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index.scss */ "./src/index.scss");
 
 
+const slider = document.querySelector("#vznosSlider");
+const sliders = document.querySelectorAll(".slider");
+const items = document.querySelectorAll(".item");
+const percent = document.querySelector(".percents");
+const item = document.querySelector("#vznos");
+const stoimost = document.querySelector("#stoimost");
 function formatInputs() {
-  const items = document.querySelectorAll(".item");
-  items.forEach(item => {
-    item.addEventListener("input", () => {
-      if (item.value.length > 19) {
-        item.value = item.value.slice(0, 19);
-      }
-      const inputValue = item.value.replace(/[^\d]/g, "");
-      item.value = inputValue.replace(/(\d{3})(?=\d)/g, "$1 ");
+  const stoimost = document.getElementById("stoimost");
+  stoimost.addEventListener("input", () => {
+    if (stoimost.value <= 1500000) {
+      stoimost.value = 1500000;
+    }
+    if (stoimost.value >= 10000000) {
+      stoimost.value = 10000000;
+    }
+  });
+
+  /*const inputValue = item.value.replace(/[^\d]/g, "");
+      item.value = inputValue.replace(/(\d{3})(?=\d)/g, "$1 ");*/
+}
+
+formatInputs();
+function sliderControl() {
+  sliders.forEach(slider => {
+    slider.addEventListener("input", e => {
+      const index = Array.from(sliders).indexOf(slider);
+      items[index].value = e.target.value;
     });
   });
 }
-formatInputs();
+sliderControl();
+function inputControl() {
+  items.forEach(item => {
+    item.addEventListener("input", e => {
+      const index = Array.from(items).indexOf(item);
+      sliders[index].value = e.target.value;
+    });
+  });
+}
+inputControl();
+function percentControl() {
+  slider.addEventListener("input", e => {
+    percent.innerHTML = e.target.value + "%";
+  });
+}
+percentControl();
+function vznosControl() {
+  slider.addEventListener("input", e => {
+    const percent = e.target.value;
+    const value = stoimost.value * percent / 100;
+    item.value = value;
+  });
+}
+vznosControl();
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=main.c0e5f44a615a900d5cad.js.map
+//# sourceMappingURL=main.6a2a09a2c3e19d18e981.js.map
