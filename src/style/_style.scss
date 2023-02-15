@@ -24,6 +24,9 @@ input {
   font-weight: 900;
   font-size: 54px;
   line-height: 90%;
+  br {
+    display: none;
+  }
 }
 
 .cardContainer {
@@ -38,7 +41,7 @@ input {
   .cards {
     position: relative;
     width: 100%;
-    min-width: 427px;
+    width: 427px;
     height: 119px;
     p {
       font-family: Gilroy, sans-serif;
@@ -125,7 +128,7 @@ input {
   button {
     appearance: none;
     border: 0;
-    min-width: 426px;
+    width: 426px;
     height: 68px;
     border-radius: 40px;
     background-color: #ff9514;
@@ -195,4 +198,50 @@ media
     min-width: 280px !important;
     min-height: 60px !important;
   }
+}
+
+@media screen and (max-width: 320px) {
+  .container {
+    padding: 44px 20px 86px 20px;
+  }
+  .cardContainer {
+    grid-template-columns: auto;
+    grid-row-gap: 25px;
+    button {
+      width: 280px !important;
+    }
+  }
+  .cards {
+    p {
+      font-size: 14px!important;
+  }
+
+}
+  .headerText{
+    font-size: 34px!important;
+    br {
+      display: inline!important;
+    }
+  }
+  label {
+    height: 60px !important;
+    margin-top: 8px !important;
+    input {
+      font-size: 22px!important;
+    }
+  }
+  .bottomText {
+    font-size: 14px!important;
+    p{
+      font-size: 22px!important;
+    }
+  }
+  .cards {
+    width: 280px !important;
+    height: 68px !important;
+  }
+  .textBox2 {
+    margin-bottom: -20px;
+  }
+
 }
