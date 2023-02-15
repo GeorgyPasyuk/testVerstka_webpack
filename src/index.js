@@ -6,22 +6,28 @@ const sliders = document.querySelectorAll(".slider");
 const items = document.querySelectorAll(".item");
 const percent = document.querySelector(".percents");
 const item = document.querySelector("#vznos");
-const stoimost = document.querySelector("#stoimost");
 
+const stoimost = document.getElementById("stoimost");
+const srok = document.getElementById("srok");
 
 function formatInputs() {
-  const stoimost = document.getElementById("stoimost");
-  stoimost.addEventListener("input", () => {
-    if (stoimost.value <= 1500000) {
+  stoimost.addEventListener("keyup", (event) => {
+    if (stoimost.value <= 1500000 && event.keyCode === 13) {
       stoimost.value = 1500000;
     }
-    if (stoimost.value >= 10000000) {
+    if (stoimost.value >= 10000000 && event.keyCode === 13) {
       stoimost.value = 10000000;
     }
   });
 
-  /*const inputValue = item.value.replace(/[^\d]/g, "");
-      item.value = inputValue.replace(/(\d{3})(?=\d)/g, "$1 ");*/
+  srok.addEventListener("keyup", (event) => {
+    if (srok.value <= 6 && event.keyCode === 13) {
+      srok.value = 6;
+    }
+    if (srok.value >= 120 && event.keyCode === 13) {
+      srok.value = 120;
+    }
+  });
 }
 formatInputs();
 
@@ -56,9 +62,7 @@ percentControl();
 function vznosControl() {
   slider.addEventListener("input", (e) => {
     const percent = e.target.value;
-    const value = (stoimost.value * percent) / 100;
-    item.value = value;
+    item.value = Math.round((stoimost.value * percent) / 100);
   });
 }
-
 vznosControl();
